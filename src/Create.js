@@ -24,10 +24,8 @@ const Create = () => {
             setIsPending(false);
             history.push("/")
         })
-        
-
-        
         }
+
     return ( 
         <div className="create">
             <h2>Add a New Blog</h2>
@@ -64,12 +62,7 @@ const Create = () => {
             <p>{title}</p>
             <p>{body}</p>
             <p>{author}</p>
-
-        
         </div>
-
-
-
         );
 }
     
