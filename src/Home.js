@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
 import Bloglist from "./Bloglist";
 import useFetch from "./usefetch";
 
 const Home = () => {
 
-    const{data: blogs, isPending, error} = useFetch("http://localhost:8000/blogs");
+    const{data: blogs, isPending, error} = useFetch("https://dojoblog-29830-default-rtdb.firebaseio.com/blogs.json");
+
+    // const{data: blogs, isPending, error} = useFetch("http://localhost:8000/blogs");
     
     return ( 
         <div className="home">

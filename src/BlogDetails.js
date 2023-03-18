@@ -1,15 +1,17 @@
+import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import useFetch from "./usefetch";
 
 const BlogDetails = () => {
     const {id} = useParams();
-    const{ data: blog, isPending, error} = useFetch("http://localhost:8000/blogs/" + id)
+    const history = useHistory()
+    const{ data: blog, isPending, error} = useFetch(`https://dojoblog-29830-default-rtdb.firebaseio.com/blogs/${id}.json/`)
 
     const handleClick= ()=>{
-        fetch("http://localhost:8000/blogs/" + blog.id, 
+        fetch(`https://dojoblog-29830-default-rtdb.firebaseio.com/blogs/${id}.json/`, 
         { method: "DELETE"
         })
-    
+        history.push('/')
     }
 
     return ( 

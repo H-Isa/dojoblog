@@ -2,19 +2,19 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 const Create = () => {
 
-        const [title, setTitle] = useState(" ");
-        const [body, setBody] = useState (" ");
-        const [author, setAuthor] =useState ("mario");
+        const [title, setTitle] = useState("");
+        const [body, setBody] = useState ("");
+        const [author, setAuthor] =useState ("");
         const [isPending, setIsPending] =useState (false)
         const history= useHistory();
-        const[name, setName]= useState("mujahid");
 
         const handleSubmit= (e)=>{
             e.preventDefault();
         const blog = {title, body, author};
 
         setIsPending(true);
-        fetch("http://localhost:8000/blogs/",{
+        
+        fetch("https://dojoblog-29830-default-rtdb.firebaseio.com/blogs.json",{
             method: "POST",
             headers: {"Content-type": "application/json"},
             body: JSON.stringify(blog)
@@ -48,12 +48,12 @@ const Create = () => {
                 </textarea>
                 
                 <label>Blog author</label>
-                <select
+                <input 
+                type="text" 
+                required
                 value= {author}
-                onChange = {(e)=> setAuthor(e.target.value)}>
-                    <option value="mario">mario</option>
-                    <option value="yoshi">yoshi</option>
-                </select>
+                onChange = {(e)=> setAuthor(e.target.value)}
+                />
 
                 {!isPending && <button>Add blog</button>}
                 {isPending && <button disabled>Adding blog</button>}
